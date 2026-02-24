@@ -1,0 +1,62 @@
+@import "@flaticon/flaticon-uicons/css/all/all";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.filterBtn{
+    border: 1px solid rgb(203, 203, 203);
+    padding: 7px 20px;
+    border-radius: 40px;
+    box-shadow: 1px 1px rgb(203, 203, 203);
+}
+
+.Active{
+    background-color: #3e4152;
+    color: white;
+    border: 1px solid;
+}
+
+.Active i{
+    display: block;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    padding: 40px;
+    opacity: 80%;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+  }
+
+.animate{
+    animation-name: shimmer;
+    background-image: linear-gradient(to right, #e6e6e6, #fefefe, #fefefe, #fdfdfd, #fcfcfc, #f9f9f9, #f6f6f6, #f3f3f3, #ededed, #e7e7e7, #e2e2e2, #dcdcdc);
+    animation-duration: 9s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shimmer {
+    from {
+        background-position: -1000px 0;
+        /* background-color: #fff; */
+    }
+    to {
+        background-position: 1000px 0;
+        /* background-color: #fff; */
+    }
+}

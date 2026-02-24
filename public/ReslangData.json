@@ -1,0 +1,33 @@
+{
+  "statusCode": 0,
+  "statusMessage": "done",
+  "data": [
+    {
+      "address_components": [
+        {
+          "long_name": "Mumbai",
+          "short_name": "Mumbai",
+          "types": ["locality", "political"]
+        },
+        {
+          "long_name": "Mumbai Suburban",
+          "short_name": "Mumbai Suburban",
+          "types": ["administrative_area_level_2", "political"]
+        },
+        {
+          "long_name": "Maharashtra",
+          "short_name": "MH",
+          "types": ["administrative_area_level_1", "political"]
+        }
+      ],
+      "formatted_address": "Mumbai, Maharashtra, India",
+      "geometry": {
+        "location": {
+          "lat": 19.0760085,
+          "lng": 72.8776559
+        }
+      },
+      "place_id": "ChIJ7cv00DwsDzIReS-U_qY7S-Y"
+    }
+  ]
+}

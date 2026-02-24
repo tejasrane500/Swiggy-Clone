@@ -1,0 +1,62 @@
+{
+  "statusCode": 0,
+  "statusMessage": "done",
+  "data": [
+    {
+      "description": "Mumbai, Maharashtra, India",
+      "place_id": "ChIJ7cv00DwsDzIReS-U_qY7S-Y",
+      "structured_formatting": {
+        "main_text": "Mumbai",
+        "secondary_text": "Maharashtra, India"
+      }
+    },
+    {
+      "description": "Indiranagar, Bengaluru, Karnataka, India",
+      "place_id": "ChIJ8Y-f_8YRrjsR7_Vw10",
+      "structured_formatting": {
+        "main_text": "Indiranagar",
+        "secondary_text": "Bengaluru, Karnataka"
+      }
+    },
+    {
+      "description": "Connaught Place, New Delhi, Delhi, India",
+      "place_id": "ChIJO4_p66_f5zsRz797R3",
+      "structured_formatting": {
+        "main_text": "Connaught Place",
+        "secondary_text": "New Delhi, Delhi"
+      }
+    },
+    {
+      "description": "Kothrud, Pune, Maharashtra, India",
+      "place_id": "ChIJ96-I8_P5zsRz797R3_Vw10",
+      "structured_formatting": {
+        "main_text": "Kothrud",
+        "secondary_text": "Pune, Maharashtra"
+      }
+    },
+    {
+      "description": "Banjara Hills, Hyderabad, Telangana, India",
+      "place_id": "ChIJ_fVf_8YRrjsR7_Vw33",
+      "structured_formatting": {
+        "main_text": "Banjara Hills",
+        "secondary_text": "Hyderabad, Telangana"
+      }
+    },
+    {
+      "description": "Salt Lake City, Kolkata, West Bengal, India",
+      "place_id": "ChIJbX9-I8_P5zsRz797R3_A12",
+      "structured_formatting": {
+        "main_text": "Salt Lake City",
+        "secondary_text": "Kolkata, West Bengal"
+      }
+    },
+    {
+      "description": "Anna Nagar, Chennai, Tamil Nadu, India",
+      "place_id": "ChIJa9-I8_P5zsRz797R3_Vw99",
+      "structured_formatting": {
+        "main_text": "Anna Nagar",
+        "secondary_text": "Chennai, Tamil Nadu"
+      }
+    }
+  ]
+}

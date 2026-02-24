@@ -1,0 +1,33 @@
+import { useContext, useEffect, useState } from "react";
+import { Coordinates } from "../Context/ContextApi";
+
+
+function useRestaurantsData() {
+  const [topRestaurentData , setTopRestaurentData] = useState([]);
+  const [onYourMindData , setOnYourMindData] = useState([]);
+  const [topResTitle , setTopResTitle] = useState("");
+  const [onlineTitle , setOnlineTitle] = useState("");
+  const [data , setData] = useState({});
+  const {coord :{lat , lng} } = useContext(Coordinates)
+
+  async function fetchData() {
+      const data = await fetch(`${import.meta.env.VITE_BASE_URL}/restaurants/list/v5?lat=${lat}&lng=${lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`)
+      const result = await data.json()
+      setData(result.data)
+      setTopResTitle(result?.data?.cards[1]?.card?.card?.header?.title)
+      setOnlineTitle(result?.data?.cards[2]?.card?.card?.title)
+      let mainData = result?.data?.cards.find((data) => data?.card?.card?.id == "top_brands_for_you" )?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      let mainData2 = result?.data?.cards.find((data) => data?.card?.card?.id == "restaurant_grid_listing_v2" )?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      setTopRestaurentData(mainData || mainData2)
+      let data2 = result?.data?.cards.find((data) => data?.card?.card?.id == "whats_on_your_mind")?.card?.card?.imageGridCards?.info
+      setOnYourMindData(data2)
+  }
+          
+  useEffect(() => {
+      fetchData();
+  },[lat , lng]);
+
+  return [topRestaurentData , onYourMindData , topResTitle , onlineTitle , data]
+}
+
+export default useRestaurantsData
