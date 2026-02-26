@@ -87,7 +87,7 @@ function Search() {
   }, [searchQuery])
 
   return (
-    <div className='w-full md:w-[800px] mt-10 mx-auto'>
+    <div className='w-full md:w-[800px] mt-10 mx-auto px-4 md:px-0'>
       <div className='w-full relative'>
         <i className="fi fi-rr-angle-small-left text-2xl mt-1 ml-2 absolute top-1/2 -translate-y-1/2"></i>
         <i className="fi fi-rr-search absolute top-1/2 right-0 -translate-y-1/2 mr-5"></i>
@@ -113,10 +113,16 @@ function Search() {
       {
         selectedResDish ? (
           <>
-            <div>
-              <p className='p-2'>Item added to cart</p>
-              <Dishes data={selectedResDish.card.card}/>
-              <p className='p-2'>More dishes from this restaurant</p>
+            <div className="col-span-full">
+              <p className='p-4 text-xl font-bold'>Item added to cart</p>
+              {/* Agar aap chahte hain ki ye card chota dikhe toh width limit kar sakte hain */}
+              <div className="md:w-1/2"> 
+                <Dishes data={selectedResDish.card.card}/>
+              </div>
+            </div>
+
+            <div className="col-span-full">
+              <p className='px-4 text-xl font-semibold'>More dishes from this restaurant</p>
             </div>
 
             {

@@ -30,6 +30,7 @@ function Navbar() {
 
   const cartData = useSelector((state) => state.cartSlice.cartItems)
   const userData = useSelector((state) => state.authSlice.userData)
+  // console.log(userData)
 
   //access data from redux store using useselector
   const visible = useSelector((state) => state.toggleSlice.searchBarToggle)
@@ -139,13 +140,13 @@ function Navbar() {
             </div>
           </div>
 
-          <div className='hidden md:flex items-center gap-2 md:gap-14'>
+          <div className=' hidden md:flex items-center gap-2 md:gap-14'>
             {
               navItems.map((data) => (
                   data.name == "Sign in" ? (
                 <div key={data.path} onClick={handleLogin}>
                   <div className='flex items-center gap-3 cursor-pointer'>
-                    { userData ? (<img className='rounded-full w-12' src={userData.photo} alt="" />) : (<span className='mt-1 text-gray-700 '>{data.image}</span>)}
+                    { userData ? (<img className='rounded-full w-12' src={userData.photo} alt="" referrerPolicy="no-referrer" />) : (<i className='mt-1 text-gray-700 '>{data.image}</i>)}
                     <p className='text-lg font-medium text-gray-700 hover:text-orange-400'>{userData ? userData.name : data.name}</p>
                     { data.name === "Cart" && cartData.length > 0 && <p>{cartData.length}</p> }
                   </div>

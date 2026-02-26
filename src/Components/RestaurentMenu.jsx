@@ -22,6 +22,7 @@ function RestaurentMenu() {
     const [discountData , setDiscountData] = useState([]);
     const [topPicksData , setTopPicksData] = useState({})
     const [value , setValue] = useState(0);
+    const [topPickValue , setTopPickValue] = useState(0);
     const [currIndex , setCurrIndex] = useState(null);
 
     // console.log(topPicksData)
@@ -41,26 +42,32 @@ function RestaurentMenu() {
       fetchMenu();
     },[]);
 
-    function handlePrev(){
+    function handleRightSwip(){
+      topPickValue >= 195 ? "" : setTopPickValue((prev) => prev + 40)
+    }
 
+    function handleLeftSwip(){
+      topPickValue <= 0 ? "" : setTopPickValue((prev) => prev - 40)
+    }
+
+    function handlePrev(){
+      value <= 0 ? "" : setValue((prev) => prev - 40)
     }
 
     function handleNext(){
-
+      value >= 100 ? "" : setValue((prev) => prev + 40)
     }
 
-    // function toggleFun(i){
-    //   setCurrIndex(i == currIndex ? null : i)
-    // }
+    console.log(topPickValue)
 
   return (
     <div className='w-full'>
       {
         menuData.length ? (
-          <div className='w-[95%] md:w-[800px] mx-auto pt-7'>
+      <div className='w-full md:w-[800px] mx-auto pt-7 px-4 md:px-0'>
         <p className='text-[12px] text-slate-500'><Link to={"/"}><span className='hover:text-slate-700 hover:cursor-pointer'>Home</span> / <span className='hover:text-slate-700 hover:cursor-pointer'>{resInfo.city}</span></Link> / <span className='text-slate-700'>{resInfo.name}</span></p>
         <h1 className='font-bold pt-5 text-2xl'>{resInfo.name}</h1>
-        <div className='w-full h-[206px] bg-gradient-to-t from-slate-200/70 mt-2 p-5 rounded-[30px]'>
+        <div className='w-full min-h-[206px] bg-gradient-to-t from-slate-200/70 mt-2 p-3 md:p-5 rounded-[30px]'>
             <div className='w-full border px-4 pb-4 border-slate-200/70 rounded-[30px] h-full bg-white'>
               <div className='w-full'>
                 <div className='flex items-center gap-1 font-semibold'>
@@ -105,11 +112,11 @@ function RestaurentMenu() {
                 <i className={`fi fi-rr-arrow-small-left text-2xl ` + (value <= 0 ? "text-gray-300" : "text-gray-800")}></i>
               </div>
               <div onClick={handleNext} className={`rounded-full w-7 h-7 cursor-pointer ` + (value >= 188 ? "bg-gray-100" : "bg-gray-200")}>
-                <i className={`fi fi-rr-arrow-small-right text-2xl ` + (value >= 188 ? "text-gray-300" : "text-gray-800")}></i>
+                <i className={`fi fi-rr-arrow-small-right text-2xl ` + (value >= 100 ? "text-gray-300" : "text-gray-800")}></i>
               </div>
             </div>
           </div>
-          <div className='flex gap-4 mt-5'>
+          <div className='flex gap-4 mt-5 transition-transform duration-300 ease-in-out' style={{ transform: `translateX(-${value}%)` }}>
           {
             discountData.map((data , i) => (
               <Discount key={i} data={data}/>
@@ -131,15 +138,15 @@ function RestaurentMenu() {
          <div className='flex justify-between mt-8'>
             <h1 className='font-bold text-xl'>Top Picks</h1>
             <div className='flex gap-2'>
-              <div onClick={handlePrev} className={`rounded-full w-7 h-7 cursor-pointer ` + (value <= 0 ? "bg-gray-100" : "bg-gray-200")}>
-                <i className={`fi fi-rr-arrow-small-left text-2xl ` + (value <= 0 ? "text-gray-300" : "text-gray-800")}></i>
+              <div onClick={handleLeftSwip} className={`rounded-full w-7 h-7 cursor-pointer ` + (topPickValue <= 0 ? "bg-gray-100" : "bg-gray-200")}>
+                <i className={`fi fi-rr-arrow-small-left text-2xl ` + (topPickValue <= 0 ? "text-gray-300" : "text-gray-800")}></i>
               </div>
-              <div onClick={handleNext} className={`rounded-full w-7 h-7 cursor-pointer ` + (value >= 188 ? "bg-gray-100" : "bg-gray-200")}>
-                <i className={`fi fi-rr-arrow-small-right text-2xl ` + (value >= 188 ? "text-gray-300" : "text-gray-800")}></i>
+              <div onClick={handleRightSwip} className={`rounded-full w-7 h-7 cursor-pointer ` + (topPickValue >= 188 ? "bg-gray-100" : "bg-gray-200")}>
+                <i className={`fi fi-rr-arrow-small-right text-2xl ` + (topPickValue >= 188 ? "text-gray-300" : "text-gray-800")}></i>
               </div>
             </div>
           </div>
-          <div className='flex gap-4 mt-5'>
+          <div className='flex gap-4 mt-5 transition-transform duration-300 ease-in-out' style={{ transform: `translateX(-${topPickValue}%)` }}>
           {
             topPicksData?.card?.card?.carousel.map(({creativeId , dish: {info : {defaultPrice , price , id}}}) => (
               // console.log(data)
